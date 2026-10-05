@@ -3,6 +3,7 @@
 ## [1.0.0] - 2026-10-05
 
 ### Tradução da Interface
+- O usuário confirmou que as correções de tradução e descrições estão funcionando no Cursor.
 - Localização integral do aplicativo Cursor para Português do Brasil (PT-BR).
 - Cobertura completa do núcleo do editor VS Code e da camada exclusiva de IA do Cursor (Glass, Composer, Chat, Agentes e configurações de modelos).
 - Dicionário com mais de 10.400 termos técnicos de IA e 13.527 mensagens do catálogo do editor traduzidos.

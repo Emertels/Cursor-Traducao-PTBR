@@ -21,3 +21,5 @@ __pycache__/
 *.zip
 *.7z
 *.rar
+# Internal team logs
+TEAMLOG.md
