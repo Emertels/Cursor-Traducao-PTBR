@@ -1,0 +1,109 @@
+================================================================================
+ PACOTE DE TRADUÇÃO COMPLETO PARA O CURSOR (PORTUGUÊS DO BRASIL - PT-BR)
+ Desenvolvido e Personalizado por: Emerson Teles
+ Versão: o instalador detecta a versão e o commit instalados
+================================================================================
+Este pacote traz a tradução integral do aplicativo Cursor para o Português do Brasil,
+cobrindo tanto o núcleo do editor quanto a camada exclusiva de Inteligência Artificial.
+--------------------------------------------------------------------------------
+ 1. O QUE ESTE PACOTE TRADUZ?
+--------------------------------------------------------------------------------
+ [x] Interface do Editor Base (Núcleo VS Code):
+     - Barra de Menus Superior (Arquivo, Editar, Seleção, Ver, Acessar, Executar, Terminal, Ajuda).
+     - Explorador de Arquivos, Árvore de Pastas e menus de contexto.
+     - Controle de Código-fonte (Git), Paleta de Comandos (Ctrl+Shift+P).
+     - Terminal Integrado e Painéis de Saída.
+     - Telas de Configurações Gerais do aplicativo (13.527 mensagens no cache oficial CLP).
+
+ [x] Camada Exclusiva de IA do Cursor ("Glass" / Composer / Chat / Agent):
+     - O ponto de entrada do Workbench carrega o dicionário somente na janela Glass.
+     - O Composer completo com os modos Agente (Agent) e Normal.
+     - Dicionário com mais de 10.400 termos de IA traduzidos em tempo real.
+     - Botões de ação em tempo real (Aceitar, Rejeitar, Aplicar, Manter, Desfazer, Aceitar Tudo, Rejeitar Tudo, Parar Tarefa).
+     - Placeholders inteligentes ("Digite uma mensagem...", "Pergunte qualquer coisa...", "Buscar modelos", etc.).
+     - Painéis de status (Gerando..., Pensando..., Pesquisando..., Concluído, etc.).
+     - Telas de Configurações do Cursor (Modelos, Recursos, Regras do Usuário, Regras do Projeto, Documentações, etc.).
+     - Ações de Diff e mesclagem de código.
+
+--------------------------------------------------------------------------------
+ 2. COMO INSTALAR (MUITO SIMPLES)
+--------------------------------------------------------------------------------
+ 1. Feche o aplicativo Cursor se ele estiver aberto no seu computador.
+ 2. Dê um duplo clique no arquivo:
+    "Instalar-Traducao.bat"
+ 3. O instalador detectará automaticamente a pasta de instalação do Cursor,
+   criará um backup original dentro da pasta do programa, em "_backups\<versão>\<commit>\"
+   e aplicará os arquivos de localização com validação de integridade. O bundle
+   Glass e os runtimes React permanecem originais; o backup do workbench.js fica
+   em _backups junto dos demais arquivos da versão e do commit.
+ 4. Ao finalizar, abra o Cursor e aproveite o aplicativo com a tradução PT-BR aplicada!
+
+--------------------------------------------------------------------------------
+ 3. SISTEMA DE BACKUP MODULAR AUTOMÁTICO
+--------------------------------------------------------------------------------
+ A segurança dos seus dados e da instalação é prioridade absoluta:
+ - Antes de qualquer modificação, os arquivos originais de fábrica do Cursor
+   são copiados e preservados de forma intocada diretamente dentro da pasta:
+   %LOCALAPPDATA%\Programs\cursor\_backups\<versão>\<commit>\
+ - O backup não é sobrescrito em instalações posteriores.
+ - A tradução é aplicada aos arquivos da versão instalada; o projeto não depende de um bundle compilado fixo.
+
+ - Se os arquivos já estiverem alterados e não houver um original confiável, o
+   instalador para sem substituir arquivos por bundles de outra versão.
+ - O atualizador oficial e as atualizações automáticas permanecem ativos. Depois
+   de atualizar o Cursor, feche-o e execute novamente o instalador.
+
+--------------------------------------------------------------------------------
+ 4. COMO RESTAURAR PARA O ORIGINAL (1 CLIQUE)
+--------------------------------------------------------------------------------
+ Se em algum momento você desejar voltar o aplicativo Cursor exatamente para o
+ estado original em inglês:
+ 1. Dê um duplo clique no arquivo:
+    "Restaurar-Original.bat"
+ 2. O restaurador detectará a versão e recuperará o backup original de fábrica
+    instantaneamente, removendo as customizações.
+
+--------------------------------------------------------------------------------
+ CRÉDITOS E AUTORIA
+--------------------------------------------------------------------------------
+ Tradução PTBR - Emerson Teles
+ Arquitetura de Injeção e Engenharia: Emerson Teles
+
+================================================================================
+ Tradução criada e otimizada por Emerson Teles.
+================================================================================
+### Cursor já modificado sem backup original
+
+Se o bundle instalado já contém a tradução e não existe backup da mesma versão e do mesmo commit, o instalador interrompe a operação. Isso impede salvar a tradução atual como se fosse o original ou restaurar um bundle incompatível. Repare ou reinstale a versão oficial correspondente do Cursor na mesma instalação e execute `Instalar-Traducao.bat` novamente. Com os arquivos oficiais repostos, o instalador pode criar o backup em `_backups\<versão>\<commit>\` antes de traduzir. A restauração só fica disponível depois que esse backup original é criado. Os atalhos ativam UTF-8 no terminal para exibir acentos e cedilhas corretamente.
+## Codificação e backups por versão
+
+Os atalhos `.bat` são arquivos ASCII sem BOM e ativam a página de código UTF-8. Os scripts PowerShell são UTF-8 com BOM e definem entrada e saída UTF-8, para manter acentos e cedilhas corretos no Windows PowerShell 5.1. Os backups originais ficam dentro da pasta do programa, separados pela versão (e pelo commit quando o aplicativo fornece essa identificação), e não devem ser substituídos por uma cópia já traduzida. Ao executar a tradução novamente, o patch deve partir do backup original confiável para evitar empilhar alterações. Se a cópia original estiver ausente, inválida ou não corresponder à versão instalada, o instalador deve parar antes de sobrescrever os arquivos e explicar como recuperar uma origem limpa.
+
+
+Backups: scripts, documentation, and translation files stay in this project folder. Raw originals are stored and restored only from the Cursor installation's _backups folder, separated by version and commit.
+## Reexecução e restauração
+- Ao executar novamente, o instalador reconhece uma tradução completa e informa que não precisa reaplicá-la. Se estiver parcial, recompõe a tradução a partir do backup original limpo e exato da versão.
+- Se o Cursor já estiver traduzido, o instalador atualiza somente o dicionário PT-BR quando houver mudanças; não reconstrói os bundles nem substitui backups. Reinicie o Cursor para carregar as novas entradas.
+- O dicionário também cobre títulos e descrições dinâmicos das Configurações do Cursor, incluindo opções da extensão Remote - SSH e mensagens para entrar e usar os recursos de IA.
+- O observador também detecta atualizações in-place em nós de texto e atributos como `placeholder`, além de elementos inseridos dinamicamente; editores e terminais continuam excluídos.
+- O backup original é criado uma única vez em `<pasta instalada>\_backups\<versão>` e nunca é substituído pela tradução. Se uma instalação já modificada não tiver backup confiável, o instalador interrompe e informa isso.
+- Na restauração, arquivos que já correspondem ao original são identificados e não são copiados novamente. Backup ausente ou inválido gera uma mensagem clara e impede uma restauração insegura.
+- O crédito de localização é exibido como `Tradução PT-BR: Emerson Teles`, na cor turquesa `#00adb5`, no local de crédito disponível na interface.
+### Mensagens do instalador e créditos
+- Se já estiver traduzido, o instalador mostra uma mensagem ciano clara e não reaplica o pacote.
+- Se já estiver original, a restauração avisa em ciano que não é necessária; uma restauração real termina com a confirmação verde de sucesso.
+- No prompt final, S abre o aplicativo em processo independente e a janela do CMD iniciada pelo atalho fecha automaticamente; N, Enter ou Esc encerra sem abrir o aplicativo.
+- Crédito: Tradução PT-BR: Emerson Teles, em turquesa #00adb5. O crédito fica no diálogo “Sobre”, abaixo dos direitos autorais.
+Restauração em versões novas: se ainda não houver backup para a compilação ativa, o restaurador só declara os bundles limpos após verificar que não contêm marcas do patch PT-BR. Se houver marcas e não existir backup confiável, a operação para sem sobrescrever arquivos; ao traduzir uma compilação limpa, o backup original é criado em `_backups` antes das alterações.
+
+--------------------------------------------------------------------------------
+ 7. PUBLICAÇÃO NO GITHUB
+--------------------------------------------------------------------------------
+Inclua: .gitignore, LICENSE, README.md, README.ag, AGENTS_PTBR.md, este LEIA-ME,
+os atalhos .bat, as pastas core e tools e os scripts/dicionários próprios.
+Não inclua: tools\inno_updater.exe, backups, arquivos .bak, temporários, logs ou
+dados pessoais. O executável do atualizador é de fornecedor; o instalador aplica
+o patch dinamicamente na cópia existente na instalação do Cursor.
+A licença MIT cobre somente scripts, documentação e materiais originais de
+tradução de Emerson Teles; não relicencia o Cursor, o VS Code ou terceiros.
+Antes do commit, confira os arquivos preparados e não force itens ignorados.

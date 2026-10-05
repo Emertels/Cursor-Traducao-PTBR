@@ -1,0 +1,218 @@
+# 🖱️ Cursor AI — Tradução para Português do Brasil (PT-BR) 🇧🇷
+
+![Versão](https://img.shields.io/badge/Versão-v1.0.0-blue?style=for-the-badge)
+![Idioma](https://img.shields.io/badge/Idioma-Português%20(Brasil)-green?style=for-the-badge)
+
+Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt-BR), cobrindo o núcleo do editor e os textos visíveis da camada do Cursor, como Composer, Chat, Agentes, painéis de diff e configurações de modelos.
+
+---
+
+## 📋 Índice
+1. [Sobre o Pacote](#-sobre-o-pacote)
+2. [O que Foi Traduzido](#-o-que-foi-traduzido)
+3. [Estrutura da Pasta](#-estrutura-da-pasta)
+4. [Como Instalar](#-como-instalar-em-2-cliques)
+5. [Como Restaurar o Original de Fábrica](#-como-restaurar-o-original-de-fábrica)
+6. [Sistema de Backup Modular e Segurança](#-sistema-de-backup-modular-e-segurança)
+7. [Diretórios do Sistema](#-diretórios-no-computador)
+8. [Padrão de Terminologia Oficial](#-padrão-de-terminologia-oficial)
+9. [Créditos e Autoria](#-créditos-e-autoria)
+
+---
+
+## 🌟 Sobre o Pacote
+
+O **Cursor** é hoje uma das ferramentas de desenvolvimento mais avançadas do mundo, integrando LLMs de ponta diretamente na experiência de edição de código.
+
+Este pacote foi criado para fornecer uma experiência nativa em português:
+* **Cobertura do Editor e da IA:** Inclui o idioma oficial do núcleo VS Code e um dicionário ampliado para a interface do Cursor.
+* **Inicialização Instantânea (Zero Latência):** Observador DOM assíncrono com enfileiramento via `requestAnimationFrame` e trava anti-reentrância com `WeakSet`. Reprocessa nós de texto e atributos de rótulos/placeholder atualizados in-place, sem alterar o conteúdo de editores ou terminais.
+* **Compatibilidade do Cursor:** O instalador preserva arquivos por versão e commit em `_backups` dentro da pasta do Cursor. O `workbench.js` carrega o dicionário somente quando a janela Glass é selecionada; `workbench.glass.main.js` recebe somente a inserção do crédito no Sobre e os runtimes React permanecem intactos.
+* **Portátil e Seguro:** Pode ser executado de qualquer pasta ou unidade sem precisar de conexão com a internet.
+* **Integridade Blindada (Zero BOM):** Arquivos essenciais como `product.json` e `nls.messages.json` são processados sem BOM UTF-8 e com hashes de integridade validados, reduzindo riscos de inconsistência em arquivos de localização.
+* **Preservação de Atalhos:** Todos os atalhos de teclado nativos (`Ctrl+K`, `Ctrl+L`, `Ctrl+I`, `Ctrl+Shift+P`, etc.) permanecem preservados porque apenas recursos de localização são modificados.
+
+---
+
+## 🎯 O que Foi Traduzido
+
+| Camada | Recursos Traduzidos |
+| :--- | :--- |
+| **Interface do Editor Base (Núcleo VS Code)** | • Barra de Menus Superior (Arquivo, Editar, Seleção, Ver, Acessar, Executar, Terminal, Ajuda).<br>• Explorador de Arquivos, Árvore de Pastas e menus de contexto do mouse.<br>• Controle de Código-fonte (Git), Paleta de Comandos (`Ctrl+Shift+P`).<br>• Terminal Integrado, Painéis de Problemas e Saída.<br>• Telas de Preferências e Configurações Gerais do aplicativo (13.527 mensagens no cache CLP oficial). |
+| **Camada Proprietária de IA ("Glass" / Composer / Chat / Agent)** | • **Composer & Agent:** Modos Agente e Normal com todos os botões de ação (Aceitar, Rejeitar, Aplicar, Manter, Desfazer, Aceitar Tudo, Rejeitar Tudo, Parar Tarefa).<br>• **Dicionário Central (15.400+ Termos):** Cobertura de diálogos, notificações, comandos e telas modais em `cursor-pt-dict.js`.<br>• **Placeholders Inteligentes:** "Digite uma mensagem...", "Pergunte qualquer coisa...", "Buscar modelos...", "Descreva a alteração...".<br>• **Estados de Execução ao Vivo:** "Gerando...", "Pensando...", "Pesquisando no código-fonte...", "Concluído", "Cancelado".<br>• **Configurações do Cursor:** Telas de Modelos, Recursos de IA, Regras do Usuário, Regras do Projeto (.cursorrules), Documentações e Indexação de Código. Títulos e descrições dinâmicos também são traduzidos, incluindo opções da extensão Remote - SSH e mensagens de entrada nos recursos de IA.<br>• **Ações de Diff:** Visualizador de diferenças lado a lado e mesclagem interativa de código. |
+
+---
+
+## 📂 Estrutura da Pasta
+
+```text
+<pasta-do-projeto>\
+├── Instalar-Traducao.bat    # Atalho rápido: aplique a tradução com 2 cliques
+├── Restaurar-Original.bat   # Atalho rápido: volte ao Cursor original em 1 clique
+├── core/                    # Módulos centrais do instalador e arquivos de tradução
+│   ├── aplicar-traducao.ps1 # Script mestre PowerShell com barra de progresso
+│   ├── restaurar-original.ps1# Script de restauração modular e limpeza
+│   ├── cursor-pt-dict.js    # Dicionário de IA com 15.400+ termos traduzidos
+│   ├── patch-workbench.js   # Patcher das ações nativas e menus do Workbench
+│   ├── patch-workbench-entry.js # Ativa o dicionário na janela Glass
+│   ├── repair-integrity.js  # Reparador de integridade e checksums (anti-BOM)
+│   └── setup-locale.js      # Compilador de cache CLP oficial
+├── tools/                   # Utilitários de suporte e instalador traduzido
+├── README.md                # Este manual em formato Markdown moderno
+├── README_EN.md             # Manual completo em Inglês
+├── README.ag                # Documento de metadados para Antigravity
+├── AGENTS.md                # Diretrizes operacionais para subagentes em Inglês
+├── AGENTS_EN.md             # Diretrizes operacionais para subagentes em Inglês
+├── AGENTS_PTBR.md           # Diretrizes operacionais para subagentes em Português
+└── LEIA-ME.txt              # Manual em texto puro para leitura rápida
+```
+
+---
+
+## 🚀 Como Instalar (em 2 cliques)
+
+1. **Feche o Cursor** caso o aplicativo esteja aberto no computador.
+2. Dê um duplo clique no arquivo:
+   ```cmd
+   Instalar-Traducao.bat
+   ```
+3. O instalador automático irá:
+   - Identificar a pasta de instalação do Cursor no seu Windows.
+   - Criar um backup imutável dentro da pasta do programa em `_backups\<versão>\<commit>\`.
+   - Injetar o dicionário de IA, compilar o cache CLP e validar os checksums.
+4. Ao finalizar, abra o **Cursor** e desfrute do ambiente de desenvolvimento com a tradução PT-BR aplicada!
+
+---
+
+## 🔄 Como Restaurar o Original de Fábrica
+
+Se em qualquer momento você desejar retornar o Cursor ao inglês original:
+1. Dê um duplo clique no arquivo:
+   ```cmd
+   Restaurar-Original.bat
+   ```
+2. O restaurador detectará a versão e recuperará o backup original de fábrica em segundos, removendo as customizações e restaurando a integridade original.
+
+---
+
+---
+
+## 🏗️ Arquitetura de 3 Camadas e Diagnóstico de Estabilidade
+
+Para reduzir riscos em versões novas do Cursor, o instalador detecta a versão e o commit instalados, guarda os arquivos originais daquela compilação e não reutiliza bundles de outra versão:
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                  ARQUITETURA DE 3 CAMADAS                    │
+├──────────────────────────────────────────────────────────────┤
+│ Camada 1: VS Code CLP / NLS Nativo                           │
+│   • Compilação de cache CLP oficial no AppData               │
+│   • Tradução com 0% de overhead dos menus, terminal, git,    │
+│     explorador, paleta de comandos e preferências gerais.     │
+├──────────────────────────────────────────────────────────────┤
+│ Camada 2: Patcher de Literais Estritos                       │
+│   • Literais nativos + crédito Sobre no Glass versionado    │
+│     do backup imutável da versão e compilação instaladas.     │
+│   • Traduz títulos de ações, tooltips e diálogos de segurança │
+│     sem tocar em identificadores minificados dinâmicos.      │
+│   • Injeta import limpo de cursor-pt-dict.js no escopo local. │
+├──────────────────────────────────────────────────────────────┤
+│ Camada 3: Observador DOM Seguro e Não-Invasivo               │
+│   • cursor-pt-dict.js carregado em out/vs/workbench/         │
+│   • workbench.js ativa o dicionário somente na janela Glass  │
+│   • Traduz nós de texto dinâmicos do Chat e Composer         │
+│   • Barreira estrita: ignora .monaco-editor, .terminal,      │
+│     .xterm, .view-lines, <svg>, <script> e <style>           │
+│   • Zero monkey-patch em window.open ou document.title       │
+│   • Bundles Glass e React permanecem originais e preservados │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### 🔍 Compatibilidade com versões atualizadas
+
+O instalador captura os arquivos originais da instalação ativa em `_backups/<versão>/<commit>/` dentro da pasta do Cursor, incluindo `workbench.js` em `workbench-entry/`. O patcher carrega o dicionário na interface Glass pelo ponto de entrada versionado e insere o crédito somente no componente Sobre de `workbench.glass.main.js`; os runtimes React permanecem intactos. A restauração recupera o Glass e o `workbench.js` originais. O usuário confirmou o funcionamento do Cursor 3.23.12.
+
+O instalador não substitui o atualizador oficial nem desativa as atualizações. Depois que o Cursor atualizar, feche-o e execute `Instalar-Traducao.bat` novamente para aplicar a tradução à nova compilação e guardar o backup correspondente. O pacote mantém o número de versão do Cursor sem modificá-lo.
+
+---
+
+## 🛡️ Sistema de Backup Modular e Segurança
+
+* **Backup Original Modular por Compilação:** Antes de alterar o bundle principal, o instalador preserva os arquivos originais dentro da pasta do programa em `%LOCALAPPDATA%\Programs\cursor\_backups\<versão>\<commit>\`.
+* **Backup por compilação:** Cada backup é vinculado à versão e ao commit detectados. Um backup existente não é sobrescrito nem reutilizado para outra compilação. Nenhum backup bruto é criado junto dos scripts.
+
+---
+
+## 📍 Diretórios no Computador
+
+* **Diretório Principal do Cursor:**
+  `%LOCALAPPDATA%\Programs\cursor\`
+* **Recursos do Aplicativo:**
+  `%LOCALAPPDATA%\Programs\cursor\resources\app\`
+* **Pasta Segura de Backup Original Modular:**
+  `%LOCALAPPDATA%\Programs\cursor\_backups\`
+
+---
+
+## 🔎 Encontrar textos novos após uma atualização
+
+Para comparar o dicionário com os textos visíveis da compilação instalada, execute:
+
+```cmd
+node tools\scan-untranslated.cjs "%LOCALAPPDATA%\Programs\cursor"
+```
+
+O scanner detecta a versão e o commit atuais e percorre os bundles `workbench.*.js` (interface principal, Glass, Automações e comércio). Ele lista candidatos sem tradução literal; alguns são nomes internos, ferramentas de desenvolvimento ou textos de teste e precisam ser revisados antes de entrar no dicionário. Na compilação 3.23.12, a varredura encontrou novos rótulos de Glass e Automações, que foram incorporados ao dicionário. Depois de uma atualização do Cursor, execute novamente o scanner e o instalador.
+
+## 📐 Padrão de Terminologia Oficial
+
+* **"aplicativo" / "aplicativos"** — Padronizado rigorosamente em todos os diálogos e menus (nunca "app").
+* **"tokens"** — Mantido fiel à terminologia técnica de IA.
+* **"ativar" / "desativar"** — No lugar de "habilitar / desabilitar".
+
+---
+
+## ✍️ Créditos e Autoria
+
+* **Tradução PTBR - Emerson Teles**
+* **Arquitetura de Injeção e Engenharia:** Emerson Teles
+* **Localização:** Português do Brasil (`pt-BR`)
+* **Compatibilidade:** Cursor Windows x64 (v3.x com detecção dinâmica de versão e commit)
+* **Distribuição:** Pacote portátil, autônomo e de alta confiabilidade.
+
+*Cursor é uma marca registrada de Anysphere, Inc. Este pacote de tradução é uma personalização desenvolvida de forma independente por Emerson Teles.*
+
+---
+
+## 👤 Sobre o Autor
+
+Desenvolvido e mantido por **Emerson Teles** (conhecido na comunidade como **Emertels**).
+
+Apaixonado por tecnologia, informática, jogos, manutenção de sistemas e tradução/localização de softwares e emuladores para o Português do Brasil (PT-BR).
+
+### 🛠️ Projetos & Contribuições Notáveis:
+- **Suítes de Automação & Utilitários no GitHub:**
+  - **[Suite-Emuladores](https://github.com/Emertels/Suite-Emuladores)** — Suíte inteligente em PowerShell para download e atualização autônoma de 56 emuladores e frontends.
+  - **[PSBBN-Translator](https://github.com/Emertels/PSBBN-Translator)** — Suíte corporativa de tradução e localização para o PSBBN Definitive Project no PS2 (40 idiomas).
+  - **[AI-Chat-Vault](https://github.com/Emertels/AI-Chat-Vault)** — Backup portátil e recuperação de conversas locais de 20 IAs agênticas e ferramentas de programação.
+  - **[Microsoft-Photos-Fix](https://github.com/Emertels/Microsoft-Photos-Fix)** — Correção avançada em PowerShell e C# para rota de abertura e papel de parede no Microsoft Fotos.
+  - **[Roccat-Syn-Pro-Air-Fix](https://github.com/Emertels/Roccat-Syn-Pro-Air-Fix)** — Suíte definitiva de estabilização, áudio e blindagem anti-queda para headset sem fio.
+- **Emulação & Consoles:** Criador e arquiteto da **[PSBBN-Translator](https://github.com/Emertels/PSBBN-Translator)** para o PS2 (40 idiomas); localização e suporte a emuladores como **PSBBN**, **PCSX2**, **Dolphin**, **shadPS4**, **Azahar** e **RetroArch**.
+- **Softwares & Utilitários:** Tradução 100% de **DSX** (DualSense X - Trusted Translator), **ASUS GPU Tweak III**, **dnGrep**, **XWidget** e ferramentas web (**DualSense Tester**, **DualShock Tools**).
+- **Jogos:** Tradução de **Silent Hill 5: Homecoming**, projetos em andamento em **Silent Hill 4: The Room** e diversos outros aplicativos.
+
+---
+
+### 🌐 Conecte-se comigo & Comunidades Oficiais:
+
+<div align="left">
+
+[![GitHub](https://img.shields.io/badge/GitHub-Emertels-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/emertels)
+[![Website](https://img.shields.io/badge/Website-Emerson_Teles-0070F3?style=for-the-badge&logo=googlechrome&logoColor=white)](https://emertels.github.io)
+[![Discord](https://img.shields.io/badge/Discord-Emertels%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://emertels.github.io/discord)
+[![X / Twitter](https://img.shields.io/badge/X_Twitter-@emertels-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/emertels)
+[![YouTube](https://img.shields.io/badge/YouTube-Emerson_Teles-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@emersonteles2379)
+[![Telegram](https://img.shields.io/badge/Telegram-Aplicativos%20Mods-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/apksmodsandroid)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Apoiar%20Projeto-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/emertels)
+
+</div>
