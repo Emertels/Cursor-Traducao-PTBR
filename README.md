@@ -69,16 +69,16 @@ Este pacote foi criado para fornecer uma experiência nativa em português:
 
 ## 🚀 Como Instalar (em 2 cliques)
 
-1. **Feche o Cursor** caso o aplicativo esteja aberto no computador.
-2. Dê um duplo clique no arquivo:
+1. Dê um duplo clique no arquivo:
    ```cmd
    Instalar-Traducao.bat
    ```
-3. O instalador automático irá:
+   *(Não precisa fechar o Cursor antes: o instalador detecta e fecha o aplicativo automaticamente para aplicar a localização com total segurança).*
+2. O instalador automático irá:
    - Identificar a pasta de instalação do Cursor no seu Windows.
    - Criar um backup imutável dentro da pasta do programa em `_backups\<versão>\<commit>\`.
-   - Injetar o dicionário de IA, compilar o cache CLP e validar os checksums.
-4. Ao finalizar, abra o **Cursor** e desfrute do ambiente de desenvolvimento com a tradução PT-BR aplicada!
+   - Injetar o dicionário de IA, compilar o cache CLP e validar a integridade.
+3. Ao concluir, abra o **Cursor** e desfrute do ambiente de desenvolvimento com a tradução PT-BR aplicada!
 
 ---
 
