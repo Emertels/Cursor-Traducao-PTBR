@@ -1,5 +1,14 @@
 # Histórico de Alterações
 
+## [1.2.0] - 2026-10-06
+
+### Traduções e auditoria do Cursor 3.23.23
+- Aprimorada a tradução de `History (Mem)` para **Histórico (Memória)** no dicionário dinâmico e no catálogo PT-BR gerado pelo `setup-locale.js`.
+- Adicionada a tradução de `Choose a plan with more usage` (**Escolha um plano com mais uso**).
+- Corrigidos dois rótulos que ainda misturavam português e inglês: `Ignore Process Names` e `Terminal: Ignore Process Names`.
+- Revisados os rótulos do Explorador de processos mostrados no print: nome da janela, abas Live/History, nome do processo, memória e rede. As entradas existentes do dicionário dinâmico também são incluídas no catálogo PT-BR.
+- Executada a varredura estática em 3.23.23: 179 candidatos em inglês encontrados nos bundles. A revisão identificou principalmente nomes próprios, modelos, identificadores e exemplos de desenvolvimento/teste, que foram mantidos; o número não representa 179 frases de interface confirmadamente pendentes.
+
 ## [1.0.0] - 2026-10-05
 
 ### Tradução da Interface

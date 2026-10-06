@@ -1,10 +1,9 @@
 # 🖱️ Cursor AI — Tradução para Português do Brasil (PT-BR) 🇧🇷
 
-![Versão](https://img.shields.io/badge/Versão-v1.0.0-blue?style=for-the-badge)
+![Versão](https://img.shields.io/badge/Versão-v1.2.0-blue?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/Idioma-Português%20(Brasil)-green?style=for-the-badge)
 
 Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt-BR), cobrindo o núcleo do editor e os textos visíveis da camada do Cursor, como Composer, Chat, Agentes, painéis de diff e configurações de modelos.
-
 
 ---
 
@@ -39,7 +38,7 @@ O **Cursor** é hoje uma das ferramentas de desenvolvimento mais avançadas do m
 Este pacote foi criado para fornecer uma experiência nativa em português:
 * **Cobertura do Editor e da IA:** Inclui o idioma oficial do núcleo VS Code e um dicionário ampliado para a interface do Cursor.
 * **Inicialização Instantânea (Zero Latência):** Observador DOM assíncrono com enfileiramento via `requestAnimationFrame` e trava anti-reentrância com `WeakSet`. Reprocessa nós de texto e atributos de rótulos/placeholder atualizados in-place, sem alterar o conteúdo de editores ou terminais.
-* **Compatibilidade do Cursor:** O patcher preserva o backup da compilação instalada, carrega o dicionário na interface Glass pelo ponto de entrada do Workbench e altera `workbench.glass.main.js` somente para inserir o crédito turquesa no diálogo Sobre. Os runtimes React permanecem intactos.
+* **Compatibilidade do Cursor:** O instalador preserva arquivos por versão e commit em `_backups` dentro da pasta do Cursor. O `workbench.js` carrega o dicionário somente quando a janela Glass é selecionada; `workbench.glass.main.js` recebe somente a inserção do crédito no Sobre e os runtimes React permanecem intactos.
 * **Portátil e Seguro:** Pode ser executado de qualquer pasta ou unidade sem precisar de conexão com a internet.
 * **Integridade Blindada (Zero BOM):** Arquivos essenciais como `product.json` e `nls.messages.json` são processados sem BOM UTF-8 e com hashes de integridade validados, reduzindo riscos de inconsistência em arquivos de localização.
 * **Preservação de Atalhos:** Todos os atalhos de teclado nativos (`Ctrl+K`, `Ctrl+L`, `Ctrl+I`, `Ctrl+Shift+P`, etc.) permanecem preservados porque apenas recursos de localização são modificados.
@@ -71,7 +70,10 @@ Este pacote foi criado para fornecer uma experiência nativa em português:
 │   └── setup-locale.js      # Compilador de cache CLP oficial
 ├── tools/                   # Utilitários de suporte e instalador traduzido
 ├── README.md                # Este manual em formato Markdown moderno
+├── README_EN.md             # Manual completo em Inglês
 ├── README.ag                # Documento de metadados para Antigravity
+├── AGENTS.md                # Diretrizes operacionais para subagentes em Inglês
+├── AGENTS_EN.md             # Diretrizes operacionais para subagentes em Inglês
 ├── AGENTS_PTBR.md           # Diretrizes operacionais para subagentes em Português
 └── LEIA-ME.txt              # Manual em texto puro para leitura rápida
 ```
@@ -128,18 +130,18 @@ Para reduzir riscos em versões novas do Cursor, o instalador detecta a versão 
 ├──────────────────────────────────────────────────────────────┤
 │ Camada 3: Observador DOM Seguro e Não-Invasivo               │
 │   • cursor-pt-dict.js carregado em out/vs/workbench/         │
-│   • workbench.js ativa a tradução só na janela Glass        │
+│   • workbench.js ativa o dicionário somente na janela Glass  │
 │   • Traduz nós de texto dinâmicos do Chat e Composer         │
 │   • Barreira estrita: ignora .monaco-editor, .terminal,      │
 │     .xterm, .view-lines, <svg>, <script> e <style>           │
 │   • Zero monkey-patch em window.open ou document.title       │
-│   • Bundle Glass preservado; crédito pontual no Sobre         │
+│   • Bundles Glass e React permanecem originais e preservados │
 └──────────────────────────────────────────────────────────────┘
 ```
 
 ### 🔍 Compatibilidade com versões atualizadas
 
-O instalador captura os arquivos originais da instalação ativa e cria um backup por versão e commit dentro do `_backups` do Cursor, incluindo o ponto de entrada `workbench.js`. Se encontrar arquivos já alterados sem uma cópia original confiável, interrompe a instalação. Se o backup correspondente existir, reaplica a tradução partindo dele sem substituí-lo. O dicionário é carregado apenas quando o Workbench informa que a janela está no modo Glass. O bundle `workbench.glass.main.js` recebe somente a inserção localizada do crédito turquesa no diálogo Sobre; os runtimes React permanecem intactos. A restauração recupera o Glass original do backup e remove o crédito. O usuário confirmou o funcionamento da tradução no Cursor 3.23.12.
+O instalador captura os arquivos originais da instalação ativa em `_backups/<versão>/<commit>/` dentro da pasta do Cursor, incluindo `workbench.js` em `workbench-entry/`. O patcher carrega o dicionário na interface Glass pelo ponto de entrada versionado e insere o crédito somente no componente Sobre de `workbench.glass.main.js`; os runtimes React permanecem intactos. A restauração recupera o Glass e o `workbench.js` originais. O usuário confirmou o funcionamento do Cursor 3.23.12.
 
 O instalador não substitui o atualizador oficial nem desativa as atualizações. Depois que o Cursor atualizar, feche-o e execute `Instalar-Traducao.bat` novamente para aplicar a tradução à nova compilação e guardar o backup correspondente. O pacote mantém o número de versão do Cursor sem modificá-lo.
 
