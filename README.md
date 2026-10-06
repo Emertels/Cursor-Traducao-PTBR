@@ -8,16 +8,27 @@ Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt
 
 ---
 
+## 🎥 Vídeo Tutorial & Demonstração
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=iH1mFZUjROs" target="_blank">
+    <img src="https://img.youtube.com/vi/iH1mFZUjROs/maxresdefault.jpg" alt="Vídeo Tutorial da Tradução Cursor AI no YouTube" width="95%">
+  </a>
+</p>
+
+---
+
 ## 📋 Índice
 1. [Sobre o Pacote](#-sobre-o-pacote)
-2. [O que Foi Traduzido](#-o-que-foi-traduzido)
-3. [Estrutura da Pasta](#-estrutura-da-pasta)
-4. [Como Instalar](#-como-instalar-em-2-cliques)
-5. [Como Restaurar o Original de Fábrica](#-como-restaurar-o-original-de-fábrica)
-6. [Sistema de Backup Modular e Segurança](#-sistema-de-backup-modular-e-segurança)
-7. [Diretórios do Sistema](#-diretórios-no-computador)
-8. [Padrão de Terminologia Oficial](#-padrão-de-terminologia-oficial)
-9. [Créditos e Autoria](#-créditos-e-autoria)
+2. [Vídeo Tutorial & Demonstração](#-vídeo-tutorial--demonstração)
+3. [O que Foi Traduzido](#-o-que-foi-traduzido)
+4. [Estrutura da Pasta](#-estrutura-da-pasta)
+5. [Como Instalar](#-como-instalar-em-2-cliques)
+6. [Como Restaurar o Original de Fábrica](#-como-restaurar-o-original-de-fábrica)
+7. [Sistema de Backup Modular e Segurança](#-sistema-de-backup-modular-e-segurança)
+8. [Diretórios do Sistema](#-diretórios-no-computador)
+9. [Padrão de Terminologia Oficial](#-padrão-de-terminologia-oficial)
+10. [Créditos e Autoria](#-créditos-e-autoria)
 
 ---
 
