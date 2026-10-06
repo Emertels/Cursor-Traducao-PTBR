@@ -1,6 +1,6 @@
 # Histórico de Alterações
 
-## [1.2.0] - 2026-10-06
+## [1.1.0] - 2026-10-06
 
 ### Traduções e auditoria do Cursor 3.23.23
 - Aprimorada a tradução de `History (Mem)` para **Histórico (Memória)** no dicionário dinâmico e no catálogo PT-BR gerado pelo `setup-locale.js`.

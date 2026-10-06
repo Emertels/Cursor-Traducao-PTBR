@@ -1,6 +1,6 @@
 # 🖱️ Cursor AI — Tradução para Português do Brasil (PT-BR) 🇧🇷
 
-![Versão](https://img.shields.io/badge/Versão-v1.2.0-blue?style=for-the-badge)
+![Versão](https://img.shields.io/badge/Versão-v1.1.0-blue?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/Idioma-Português%20(Brasil)-green?style=for-the-badge)
 
 Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt-BR), cobrindo o núcleo do editor e os textos visíveis da camada do Cursor, como Composer, Chat, Agentes, painéis de diff e configurações de modelos.
