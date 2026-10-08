@@ -1,5 +1,18 @@
 # Histórico de Alterações
 
+## [1.2.0] - 2026-10-07
+
+### Configurações, boas-vindas e Customize
+- Traduzidos rótulos que faltavam nas telas dos prints: `Sign in`, `Please log in`, `Try a new window for running parallel agents`, `Indexing`, `Breadcrumb` e `Output (Ctrl+Shift+U)`.
+- Revisadas as telas de boas-vindas, barra de status, configurações do Cursor, Customize e Composer. As frases `Plan, Build, / for skills, @ for context` e `[[Press {0} to generate code.]] Start typing to dismiss.` já estavam no dicionário e no catálogo de localização; elas aparecem em português depois de aplicar o patch.
+- Adicionada a tradução de `Drag and drop agent chats to split your view into tiled panes` e ampliado o tratamento de atributos `data-placeholder`, usado por campos de entrada do Composer.
+- Mantidos sem tradução nomes próprios de extensões, plugins e skills adicionados pelo usuário, além de identificadores e siglas técnicas.
+- Confirmado o patch do diálogo “Sobre”: ele insere `Tradução PT-BR: Emerson Teles` em azul turquesa abaixo dos direitos autorais, usando o bundle original exato da compilação.
+
+### Auditoria de cobertura
+- Executada uma varredura estática dos bundles do Cursor 3.23.23. Os candidatos incluem conteúdo interno e de teste, então a contagem não equivale a frases de interface pendentes nem garante cobertura completa.
+- Na captura inicial, o patch ainda não tinha sido aplicado. Após a aplicação, confirmados no Cursor local o carregamento do dicionário, o crédito no diálogo “Sobre” e o ponto de entrada da tela Glass.
+
 ## [1.1.0] - 2026-10-06
 
 ### Traduções e auditoria do Cursor 3.23.23

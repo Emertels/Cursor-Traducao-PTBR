@@ -466,6 +466,9 @@ export const CURSOR_DICT = {
   "Wiring the digest template": "Configurando o modelo do resumo",
   "Free Plan · Upgrade": "Plano Gratuito · Atualizar",
   "Recent projects": "Projetos recentes",
+  "Sign in": "Entrar",
+  "Please log in": "Faça login",
+  "Try a new window for running parallel agents": "Experimente uma nova janela para executar agentes em paralelo",
   "Model fast": "Modelo rápido",
   "Tab Stats: ": "Estatísticas do Tab: ",
   "Agent Stats: ": "Estatísticas do Agente: ",
@@ -1368,6 +1371,7 @@ export const CURSOR_DICT = {
   "Open any file, URL, ...": "Abrir qualquer arquivo, URL, ...",
   "Open any file, URL, …": "Abrir qualquer arquivo, URL, …",
   "Plan, Build, / for skills, @ for context": "Planejar, Construir, / para habilidades, @ para contexto",
+  "Drag and drop agent chats to split your view into tiled panes": "Arraste e solte chats de agentes para dividir a visualização em painéis lado a lado",
   "Upgrade to Pro": "Atualizar para o Pro",
   "Review Changes": "Revisar alterações",
   "Review": "Revisar",
@@ -2262,6 +2266,9 @@ export const CURSOR_DICT = {
   "Plugins": "Plugins",
   "Customize": "Personalizar",
   "Indexing & Docs": "Indexação e Documentos",
+  "Indexing": "Indexação",
+  "Breadcrumb": "Trilha de navegação",
+  "Output (Ctrl+Shift+U)": "Saída (Ctrl+Shift+U)",
   "Code Intelligence": "Inteligência de Código",
   "Tools & MCPs": "Ferramentas e MCPs",
   "Hooks": "Ganchos (Hooks)",
@@ -16658,7 +16665,7 @@ export function translateProps(props) {
   }
   
   const textAttrs = [
-    'placeholder', 'title', 'aria-label', 'ariaLabel', 'accessibleLabel', 'tooltip', 'label', 'description',
+    'placeholder', 'data-placeholder', 'title', 'aria-label', 'ariaLabel', 'accessibleLabel', 'tooltip', 'label', 'description',
     'buttonText', 'heading', 'text', 'subtitle', 'header', 'name',
     'ctaText', 'primaryActionText', 'secondaryActionText', 'banner', 'compactLabel', 'groupedLabel', 'groupedMeta'
   ];
@@ -16801,6 +16808,11 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
           if (t !== node.placeholder) node.placeholder = t;
         }
       }
+      if (node.getAttribute && node.getAttribute('data-placeholder')) {
+        const placeholder = node.getAttribute('data-placeholder');
+        const translatedPlaceholder = translateText(placeholder);
+        if (translatedPlaceholder !== placeholder) node.setAttribute('data-placeholder', translatedPlaceholder);
+      }
       if (node.title) {
         const t = translateText(node.title);
         if (t !== node.title) node.title = t;
@@ -16895,7 +16907,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
       obs.observe(document.body, {
         attributes: true,
-        attributeFilter: ['placeholder', 'title', 'aria-label', 'data-tooltip'],
+        attributeFilter: ['placeholder', 'data-placeholder', 'title', 'aria-label', 'data-tooltip'],
         childList: true,
         characterData: true,
         subtree: true

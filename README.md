@@ -1,6 +1,6 @@
 # 🖱️ Cursor AI — Tradução para Português do Brasil (PT-BR) 🇧🇷
 
-![Versão](https://img.shields.io/badge/Versão-v1.1.0-blue?style=for-the-badge)
+![Versão](https://img.shields.io/badge/Versão-v1.2.0-blue?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/Idioma-Português%20(Brasil)-green?style=for-the-badge)
 
 Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt-BR), cobrindo o núcleo do editor e os textos visíveis da camada do Cursor, como Composer, Chat, Agentes, painéis de diff e configurações de modelos.
@@ -17,17 +17,28 @@ Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt
 
 ---
 
+## 📸 Demonstração Visual
+
+<p align="center">
+  <img src="assets/cursor_config_ptbr.png" alt="Painel Geral de Configurações do Cursor AI em Português" width="95%">
+  <br>
+  <em>Painel Geral, Conta, Agentes, Inicialização e Notificações 100% em Português do Brasil</em>
+</p>
+
+---
+
 ## 📋 Índice
 1. [Sobre o Pacote](#-sobre-o-pacote)
 2. [Vídeo Tutorial & Demonstração](#-vídeo-tutorial--demonstração)
-3. [O que Foi Traduzido](#-o-que-foi-traduzido)
-4. [Estrutura da Pasta](#-estrutura-da-pasta)
-5. [Como Instalar](#-como-instalar-em-2-cliques)
-6. [Como Restaurar o Original de Fábrica](#-como-restaurar-o-original-de-fábrica)
-7. [Sistema de Backup Modular e Segurança](#-sistema-de-backup-modular-e-segurança)
-8. [Diretórios do Sistema](#-diretórios-no-computador)
-9. [Padrão de Terminologia Oficial](#-padrão-de-terminologia-oficial)
-10. [Créditos e Autoria](#-créditos-e-autoria)
+3. [Demonstração Visual](#-demonstração-visual)
+4. [O que Foi Traduzido](#-o-que-foi-traduzido)
+5. [Estrutura da Pasta](#-estrutura-da-pasta)
+6. [Como Instalar](#-como-instalar-em-2-cliques)
+7. [Como Restaurar o Original de Fábrica](#-como-restaurar-o-original-de-fábrica)
+8. [Sistema de Backup Modular e Segurança](#-sistema-de-backup-modular-e-segurança)
+9. [Diretórios do Sistema](#-diretórios-no-computador)
+10. [Padrão de Terminologia Oficial](#-padrão-de-terminologia-oficial)
+11. [Créditos e Autoria](#-créditos-e-autoria)
 
 ---
 
