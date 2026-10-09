@@ -104,6 +104,9 @@ Este pacote foi criado para fornecer uma experiência nativa em português:
    - Injetar o dicionário de IA, compilar o cache CLP e validar a integridade.
 3. Ao concluir, abra o **Cursor** e desfrute do ambiente de desenvolvimento com a tradução PT-BR aplicada!
 
+> [!NOTE]
+> **Atualizações do aplicativo:** O instalador não interfere nas atualizações oficiais do Cursor. Sempre que o aplicativo for atualizado para uma nova versão, basta executar o `Instalar-Traducao.bat` novamente para aplicar a tradução à nova compilação.
+
 ---
 
 ## 🔄 Como Restaurar o Original de Fábrica
