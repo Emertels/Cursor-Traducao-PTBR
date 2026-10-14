@@ -22,6 +22,9 @@ const workbenchFiles = [
 ];
 
 const REPLACEMENTS = [
+  // Menu principal da janela do Cursor
+  { search: 'label:"New Chat"', replace: 'label:"Nova Conversa"' },
+
   // Export Transcript
   { search: 'label:"Export Transcript"', replace: 'label:"Exportar Transcrição"' },
   { search: 'title:{value:"Export Transcript",original:"Export Transcript"}', replace: 'title:{value:"Exportar Transcrição",original:"Export Transcript"}' },
@@ -147,6 +150,15 @@ const REPLACEMENTS = [
   { search: 'label:"Run Everything Mode Warning"', replace: 'label:"Aviso do Modo Executar Tudo"' }
 ];
 
+// Textos da tela inicial do Glass são retornados pelo bundle como placeholders
+// e descrições de React, não como texto DOM comum. Corrigi-los na origem evita
+// depender do observador para alcançar o editor/composer.
+const GLASS_TEXT_REPLACEMENTS = [
+  { search: 'Plan, Build, / for skills, @ for context', replace: 'Planejar, Construir, / para habilidades, @ para contexto' },
+  { search: 'Automate repetitive tasks with always-on agents and configure Cursor\'s built-in agents for your team.', replace: 'Automatize tarefas repetitivas com agentes sempre ativos e configure os agentes integrados do Cursor para sua equipe.' },
+  { search: 'Automate repetitive tasks with always-on cloud agents that respond to environment triggers.', replace: 'Automatize tarefas repetitivas com agentes na nuvem sempre ativos, que respondem a gatilhos do ambiente.' }
+];
+
 for (const file of workbenchFiles) {
   if (!fs.existsSync(file)) continue;
   const shortName = path.basename(file);
@@ -176,6 +188,13 @@ for (const file of workbenchFiles) {
         content = content.replaceAll(item.search, item.replace);
         count++;
       }
+    }
+  }
+
+  for (const item of GLASS_TEXT_REPLACEMENTS) {
+    if (content.includes(item.search)) {
+      content = content.replaceAll(item.search, item.replace);
+      count++;
     }
   }
 

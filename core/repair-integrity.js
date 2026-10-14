@@ -36,12 +36,12 @@ if (fs.existsSync(prodPath)) {
         fs.writeFileSync(prodPath, JSON.stringify(prod, null, '\t'), 'utf8');
         console.log('    [OK] Integridade do aplicativo Cursor reparada e sincronizada com sucesso!');
       } else {
-        console.log('    [OK] Integridade de todos os arquivos ja esta 100% perfeita.');
+        console.log('    [OK] A integridade de todos os arquivos já está 100%.');
       }
     }
   } catch (e) {
     console.error('    [!] Erro ao validar integridade:', e.message);
   }
 } else {
-  console.log('    [!] product.json nao localizado em:', prodPath);
+  console.log('    [!] product.json não localizado em:', prodPath);
 }

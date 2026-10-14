@@ -6,6 +6,10 @@
 // ==============================================================================
 
 export const CURSOR_DICT = {
+  "End voice session": "Encerrar sessão de voz",
+  "Retry voice session": "Tentar iniciar a sessão de voz novamente",
+  "Voice session failed": "Falha na sessão de voz",
+  "Manage Accessibility and Screen Recording": "Gerenciar acessibilidade e gravação de tela",
   // Rótulos da interface de controle de versão e dicas do Plan Mode.
   "Uncommitted": "Não confirmadas",
   "Staged": "Preparadas",
@@ -1371,6 +1375,8 @@ export const CURSOR_DICT = {
   "Open any file, URL, ...": "Abrir qualquer arquivo, URL, ...",
   "Open any file, URL, …": "Abrir qualquer arquivo, URL, …",
   "Plan, Build, / for skills, @ for context": "Planejar, Construir, / para habilidades, @ para contexto",
+  "Messages sent while Cursor is working can steer it mid-run without interrupting - turn it on under New Messages in Agents settings": "As mensagens enviadas enquanto o Cursor está trabalhando podem orientá-lo durante a execução sem interrompê-lo. Ative essa opção em Novas mensagens, nas configurações de Agentes.",
+  "Messages sent while Cursor is working can steer it mid-run without interrupting — turn it on under New Messages in Agents settings": "As mensagens enviadas enquanto o Cursor está trabalhando podem orientá-lo durante a execução sem interrompê-lo. Ative essa opção em Novas mensagens, nas configurações de Agentes.",
   "Drag and drop agent chats to split your view into tiled panes": "Arraste e solte chats de agentes para dividir a visualização em painéis lado a lado",
   "Upgrade to Pro": "Atualizar para o Pro",
   "Review Changes": "Revisar alterações",
@@ -1436,7 +1442,7 @@ export const CURSOR_DICT = {
   "Show Apps Panel": "Mostrar Painel de Aplicativos",
   "Hide Sidebar": "Ocultar Barra Lateral",
   "Open SSH Config": "Abrir Configuração SSH",
-  "Type in a host like user@host or select from SSH config": "Digite um host como usuario@host ou selecione da configuração SSH",
+  "Type in a host like user@host or select from SSH config": "Digite um host como usuário@host ou selecione da configuração SSH",
   "SSH Hostname": "Nome do host SSH",
   "Select Folder": "Selecionar Pasta",
   "Search workspaces...": "Pesquisar espaços de trabalho...",
@@ -1752,7 +1758,7 @@ export const CURSOR_DICT = {
   "New Project": "Novo Projeto",
   "New Agent in No Repo": "Novo Agente sem Repositório",
   "Select configured SSH host or enter an SSH destination": "Selecione o host SSH configurado ou insira um destino SSH",
-  "e.g. ubuntu@ec2-3-106-99.amazonaws.com, ssh -i key user@host, or named host below": "ex.: ubuntu@ec2-3-106-99.amazonaws.com, ssh -i chave usuario@host ou host nomeado abaixo",
+  "e.g. ubuntu@ec2-3-106-99.amazonaws.com, ssh -i key user@host, or named host below": "ex.: ubuntu@ec2-3-106-99.amazonaws.com, ssh -i chave usuário@host ou host nomeado abaixo",
   "+ Add New SSH Host...": "+ Adicionar Novo Host SSH...",
   "Add New SSH Host...": "Adicionar Novo Host SSH...",
   "Configure SSH Hosts...": "Configurar Hosts SSH...",
@@ -2457,7 +2463,7 @@ export const CURSOR_DICT = {
   "Commit Attribution": "Atribuição de Commit",
   "PR Attribution": "Atribuição de PR",
   "Branch Prefix": "Prefixo de Branch",
-  "Prefix for new branches created by Agent (e.g., cursor/, username/)": "Prefixo para novas branches criadas pelo Agente (ex: cursor/, usuario/)",
+  "Prefix for new branches created by Agent (e.g., cursor/, username/)": "Prefixo para novas branches criadas pelo Agente (ex.: cursor/, usuário/)",
   "Team-Level Repository Control": "Controle de Repositório a Nível de Equipe",
   "Disable AI features in specific repositories based on file pattern": "Desativar recursos de IA em repositórios específicos com base no padrão de arquivos",
   "Hierarchical Cursor Ignore": "Ignorar Hierárquico do Cursor",
@@ -15414,9 +15420,9 @@ export const CURSOR_DICT = {
   "Your code data will not be trained on or used to improve the product. We will not store your code.": "Os dados do seu código não serão usados para treinar modelos ou melhorar o produto. Seu código não será armazenado.",
   // Cobertura adicional de rótulos e componentes encontrados no Cursor 3.22.12.
   // Cobertura adicional de rótulos e componentes encontrados no Cursor 3.22.12.
-  "Error:\nDigite um host como usuario@host ou selecione da configuração SSH": "Erro:\nDigite um host como usuario@host ou selecione uma configuração SSH",
+  "Error:\nDigite um host como usuario@host ou selecione da configuração SSH": "Erro:\nDigite um host como usuário@host ou selecione uma configuração SSH",
   "Error:": "Erro:",
-  "Digite um host como usuario@host ou selecione da configuração SSH": "Digite um host como usuario@host ou selecione uma configuração SSH",
+  "Digite um host como usuario@host ou selecione da configuração SSH": "Digite um host como usuário@host ou selecione uma configuração SSH",
   "Replay": "Reproduzir",
   "Glass present": "Glass disponível",
   "Indexed Agent Search Dev Tools": "Ferramentas de desenvolvimento da pesquisa indexada de agentes",
@@ -16049,6 +16055,42 @@ export const CURSOR_DICT = {
   "Vercel environment variable expert guidance. Use when working with .env files, vercel env commands, OIDC tokens, or managing environment-specific configuration.": "Orientação especializada em variáveis ​​de ambiente Vercel. Use ao trabalhar com arquivos .env, comandos vercel env, tokens OIDC ou gerenciar configurações específicas do ambiente.",
   "Vercel Chat SDK expert guidance. Use when building multi-platform chat bots — Slack, Telegram, Microsoft Teams, Discord, Google Chat, GitHub, Linear — with a single codebase. Covers the Chat class, adapters, threads, messages, cards, modals, streaming, state management, and webhook setup.": "Orientação especializada do Vercel Chat SDK. Use ao criar bots de bate-papo multiplataforma — Slack, Telegram, Microsoft Teams, Discord, Google Chat, GitHub, Linear — com uma única base de código. Abrange a classe de bate-papo, adaptadores, threads, mensagens, cartões, modais, streaming, gerenciamento de estado e configuração de webhook.",
   "Build multi-platform chat bots with Chat SDK (`chat` npm package). Use when developers want to (1) Build a Slack, Teams, Google Chat, Discord, Telegram, GitHub, Linear, or WhatsApp bot, (2) Use Chat SDK to handle mentions, direct messages, subscribed threads, reactions, slash commands, cards, modals, files, or AI streaming, (3) Set up webhook routes or multi-adapter bots, (4) Send rich cards or streamed AI responses to chat platforms, (5) Build or maintain a custom adapter or state adapter. Triggers on \"chat sdk\", \"chat bot\", \"slack bot\", \"teams bot\", \"google chat bot\", \"discord bot\", \"telegram bot\", \"whatsapp bot\", \"@chat-adapter\", \"@chat-adapter/state-\", \"custom adapter\", \"state adapter\", \"build adapter\", and building bots that work across multiple chat platforms.": "Crie bots de bate-papo multiplataforma com Chat SDK (pacote `chat` npm). Use quando os desenvolvedores desejam (1) criar um bot do Slack, Teams, Google Chat, Discord, Telegram, GitHub, Linear ou WhatsApp, (2) usar o Chat SDK para lidar com menções, mensagens diretas, threads inscritos, reações, comandos de barra, cartões, modais, arquivos ou streaming de IA, (3) configurar rotas de webhook ou bots de vários adaptadores, (4) enviar rich cards ou respostas de IA transmitidas para plataformas de bate-papo, (5) criar ou manter um adaptador personalizado ou adaptador de estado. Aciona \"chat sdk\", \"chat bot\", \"slack bot\", \"teams bot\", \"google chat bot\", \"discord bot\", \"telegram bot\", \"whatsapp bot\", \"@chat-adapter\", \"@chat-adapter/state-\", \"adaptador personalizado\", \"adaptador de estado\", \"adaptador de construção\" e bots de construção que funcionam em várias plataformas de chat.",
+  "Add a Custom MCP Server": "Adicionar um servidor MCP personalizado",
+  "Another Window": "Outra janela",
+  "Batch edits": "Edições em lote",
+  "Chat Width": "Largura do chat",
+  "Set the maximum width of Agent conversations": "Defina a largura máxima das conversas do agente",
+  "Describe the change": "Descreva a alteração",
+  "Discard comment?": "Descartar comentário?",
+  "This comment isn't saved yet": "Este comentário ainda não foi salvo",
+  "Got It": "Entendi",
+  "No matching properties": "Nenhuma propriedade correspondente",
+  "Point at anything on the page and tell the agent what to fix.": "Aponte para qualquer item na página e diga ao agente o que corrigir.",
+  "Reset all CSS edits": "Redefinir todas as edições de CSS",
+  "Search side chats": "Pesquisar conversas laterais",
+  "System Default": "Padrão do sistema",
+  "The entire stack will be squashed into a single commit in the base branch.": "Toda a sequência será condensada em um único commit na branch base.",
+  "Weekly Limit": "Limite semanal",
+  "New MCP Server": "Novo servidor MCP",
+  "Create a Merge Commit": "Criar um commit de merge",
+  "All commits in each PR will be added to the base branch via a merge commit.": "Todos os commits de cada pull request serão adicionados à branch base por meio de um commit de merge.",
+  "Squash and Merge": "Condensar e mesclar",
+  "Exit Design Mode": "Sair do modo Design",
+  "Microphone used in voice chats.": "Microfone usado em conversas por voz.",
+  "Sent by voice call": "Enviado por chamada de voz",
+  "Step limit not supported": "Limite de etapas não compatível",
+  "Filter properties": "Filtrar propriedades",
+  "Cursor periodically removes old worktrees to free disk space. Tune how aggressively cleanup runs.": "O Cursor remove worktrees antigos periodicamente para liberar espaço em disco. Ajuste a intensidade da limpeza.",
+  "Cursor periodically removes old worktrees to free disk space": "O Cursor remove worktrees antigos periodicamente para liberar espaço em disco",
+  "Worktree Cleanup": "Limpeza de worktrees",
+  "Load React Developer Tools so Chrome DevTools shows the Components and Profiler tabs. It slows every React commit, so it's off by default. Restarts Cursor.": "Carregue as Ferramentas de desenvolvedor do React para exibir as abas Componentes e Profiler nas Ferramentas do Chrome. Isso deixa cada atualização do React mais lenta, por isso fica desativado por padrão. Reinicia o Cursor.",
+  "Show React's component render tracks in the Chrome DevTools Performance panel. They cost time on every commit even when nothing is recording, so turn them on only to profile. Reloads the window.": "Exiba as faixas de renderização dos componentes React no painel Desempenho das Ferramentas do Chrome. Elas consomem tempo em cada atualização, mesmo sem uma gravação, então ative-as apenas para criar um perfil. Recarrega a janela.",
+  "React DevTools": "Ferramentas de desenvolvedor do React",
+  "React Performance Tracks": "Faixas de desempenho do React",
+  "View Report": "Ver relatório",
+  "Send to agent": "Enviar ao agente",
+  "Try Annotate": "Experimente Anotar",
+  "Tech Lead": "Líder técnico",
 };
 
 // Exportação global para interceptação de configurações
@@ -16073,6 +16115,15 @@ export function translateText(str) {
   const normalizedDescription = trimmed.replace(/\s+/g, ' ');
   if (CURSOR_DICT[normalizedDescription]) {
     return str.replace(trimmed, CURSOR_DICT[normalizedDescription]);
+  }
+
+  // Linha da página de automações pode chegar concatenada com rótulos de estado
+  // do React, em vez de um único texto estático do catálogo.
+  if (/^(?:Use automations to save time\.?\s*)?(?:Ativado\s*)?(?:Automate\s+)?repetitive tasks with always-on agents(?: and configure Cursor's built-in agents for your team\.)?$/i.test(trimmed)) {
+    return 'Use automações para economizar tempo: automatize tarefas repetitivas com agentes sempre ativos e configure os agentes integrados do Cursor para sua equipe.';
+  }
+  if (/^Use automations to save time\.?$/i.test(trimmed)) {
+    return 'Use automações para economizar tempo';
   }
   const showMoreMatch = trimmed.match(/^(?:Show|Mostrar|Exibir)\s+(\d+)\s+(?:more|mais)$/i);
   if (showMoreMatch) {
@@ -16739,7 +16790,9 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       if (!parent) return;
       const pTag = parent.tagName;
       if (pTag === 'SCRIPT' || pTag === 'STYLE' || pTag === 'PRE' || pTag === 'CODE' || pTag === 'CANVAS') return;
-      if (parent.closest && parent.closest('.monaco-editor, .terminal, .xterm, .view-lines, svg')) return;
+      const inEditorSurface = parent.closest && parent.closest('.monaco-editor, .terminal, .xterm, .view-lines, svg');
+      const isPlaceholderContent = parent.closest && parent.closest('[placeholder], [data-placeholder]');
+      if (inEditorSurface && !isPlaceholderContent) return;
 
       const v = node.nodeValue;
       if (v && v.trim()) {
@@ -16756,7 +16809,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     } else if (node.nodeType === 1) {
       const tag = node.tagName;
       if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'PRE' || tag === 'CODE' || tag === 'SVG' || tag === 'CANVAS') return;
-      if (node.closest && node.closest('.monaco-editor, .terminal, .xterm, .view-lines, svg')) return;
+      const inEditorSurface = node.closest && node.closest('.monaco-editor, .terminal, .xterm, .view-lines, svg');
+      const isPlaceholderElement = (node.matches && node.matches('[placeholder], [data-placeholder]')) ||
+        (node.closest && node.closest('[placeholder], [data-placeholder]'));
+      if (inEditorSurface && !isPlaceholderElement) return;
 
       // Crédito do tradutor no diálogo Sobre, como elemento próprio e em turquesa.
       if (node.children && node.children.length === 0 && node.parentElement) {

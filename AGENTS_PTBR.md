@@ -53,6 +53,8 @@ Este documento define detalhes arquiteturais, padrões operacionais e invariante
    Pressione `Ctrl+I` para abrir o Composer. Verifique se os botões de ação ("Aceitar", "Rejeitar", "Aplicar") e placeholders aparecem em português sem quebras de layout.
 3. **Verificação de Restauração:**
    Execute `Restaurar-Original.bat` e confirme que o backup do workbench correspondente à versão instalada foi restaurado.
+### Busca de instalação e restauração
+- Instalador e restaurador validam primeiro caminhos do processo, registro e locais conhecidos; só quando nenhum candidato válido contém Cursor.exe e `resources\app\package.json` iniciam a busca profunda em unidades fixas e removíveis. A busca ignora pastas raiz do sistema e junctions, valida também o arquivo-chave, deduplica caminhos, mantém instalações distintas selecionáveis e exibe o progresso no título da janela, nunca com `Write-Progress`. Mantenha `Find-Installations.ps1` ao lado dos scripts.
 ## Reexecução e restauração
 - Ao executar novamente, o instalador reconhece uma tradução completa e informa que não precisa reaplicá-la. Se estiver parcial, recompõe a tradução a partir do backup original limpo e exato da versão.
 - Se o Cursor já estiver traduzido, o instalador atualiza somente o dicionário PT-BR quando houver mudanças; não reconstrói os bundles nem substitui backups. Reinicie o Cursor para carregar as novas entradas.

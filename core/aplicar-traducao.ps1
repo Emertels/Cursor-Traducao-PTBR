@@ -70,14 +70,14 @@ public static class CursorProcessLauncher {
     }
     [CursorProcessLauncher]::Start($Executable, $Locale)
 }
-$Host.UI.RawUI.WindowTitle = "Instalador Cursor PT-BR - Emerson Teles"
+$Host.UI.RawUI.WindowTitle = "Instalador PT-BR - Cursor - Emerson Teles"
 
 function Write-Header {
     Clear-Host
     Write-Host ""
     Write-Host " ==================================================================== " -ForegroundColor Cyan
-    Write-Host "             TRADUÇÃO CURSOR PARA PORTUGUÊS DO BRASIL                 " -ForegroundColor Green
-    Write-Host "           Desenvolvido e Personalizado por: Emerson Teles            " -ForegroundColor Yellow
+    Write-Host "             TRADUÇÃO CURSOR PARA PORTUGUÊS DO BRASIL                 " -ForegroundColor Cyan
+    Write-Host "           Desenvolvido e Personalizado por: Emerson Teles            " -ForegroundColor Cyan
     Write-Host " ==================================================================== " -ForegroundColor Cyan
     Write-Host ""
 }
@@ -146,18 +146,16 @@ function Copy-FileWithProgress {
     }
 
     if (-not $success) {
-        Write-Host "[x] Erro: Não foi possivel copiar para $Destination. Verifique se ha processos abertos." -ForegroundColor Red
-        throw "Falha na copia do arquivo"
+        Write-Host "[x] Erro: Não foi possível copiar para $Destination. Verifique se há processos abertos." -ForegroundColor Red
+        throw "Falha na cópia do arquivo"
     }
 }
 
 function Find-CursorInstallation {
+    . (Join-Path $PSScriptRoot 'Find-Installations.ps1')
     $candidates = @()
 
-    $proc = Get-Process -Name "Cursor" -ErrorAction SilentlyContinue | Select-Object -First 1
-    if ($proc -and $proc.Path) {
-        $candidates += (Split-Path $proc.Path -Parent)
-    }
+    if ($script:preferredCursorDir) { $candidates += $script:preferredCursorDir }
 
     $candidates += (Join-Path $env:LOCALAPPDATA "Programs\cursor")
     $candidates += (Join-Path $env:LOCALAPPDATA "Programs\Cursor")
@@ -185,24 +183,57 @@ function Find-CursorInstallation {
         } catch { }
     }
 
-    $drives = Get-PSDrive -PSProvider FileSystem | Select-Object -ExpandProperty Root
-    foreach ($d in $drives) {
-        $candidates += (Join-Path $d "cursor")
-        $candidates += (Join-Path $d "Cursor")
-        $candidates += (Join-Path $d "Programs\cursor")
+    # Primeiro valida caminhos conhecidos; só faz busca profunda quando nenhum deles serve.
+    $quickValid = @($candidates | Where-Object {
+        $candidatePath = ([string]$_).Trim().Trim('"')
+        (Test-Path -LiteralPath (Join-Path $candidatePath 'Cursor.exe') -PathType Leaf) -and
+        (Test-Path -LiteralPath (Join-Path $candidatePath 'resources\app\package.json') -PathType Leaf)
+    } | Select-Object -Unique)
+    if ($quickValid.Count -gt 0) {
+        $candidates = $quickValid
+    } else {
+        Write-Host "    Nenhum caminho conhecido validado; iniciando busca em todas as unidades..." -ForegroundColor DarkGray
+        $candidates += @(Find-ExecutableDirectoriesOnAllDrives -ExecutableName 'Cursor.exe' -ProductLabel 'Cursor' -ValidationRelativePath 'resources\app\package.json')
     }
-
-    foreach ($cand in ($candidates | Where-Object { $_ } | Select-Object -Unique)) {
-        if ((Test-Path (Join-Path $cand "resources\app")) -or (Test-Path (Join-Path $cand "Cursor.exe"))) {
-            return $cand
-        }
+    $candidates = @($candidates | Where-Object { $_ } | Select-Object -Unique)
+    $valid = @()
+    $seenPaths = @{}
+    foreach ($cand in ($candidates | Where-Object { $_ })) {
+        try {
+            $normalizedPath = [System.IO.Path]::GetFullPath(([string]$cand).Trim().Trim('"'))
+            $canonicalPath = (Resolve-Path -LiteralPath $normalizedPath -ErrorAction Stop).Path.TrimEnd('\')
+            if (-not $seenPaths.ContainsKey($canonicalPath) -and
+                (Test-Path -LiteralPath (Join-Path $canonicalPath "resources\app\package.json") -PathType Leaf) -and
+                (Test-Path -LiteralPath (Join-Path $canonicalPath "Cursor.exe") -PathType Leaf)) {
+                $seenPaths[$canonicalPath] = $true
+                $valid += $canonicalPath
+            }
+        } catch { }
     }
-
+    if ($script:preferredCursorDir) {
+        try {
+            $preferredPath = [System.IO.Path]::GetFullPath(([string]$script:preferredCursorDir).Trim().Trim('"')).TrimEnd('\')
+            foreach ($validPath in $valid) {
+                if ([string]::Equals($validPath, $preferredPath, [System.StringComparison]::OrdinalIgnoreCase)) { return $validPath }
+            }
+        } catch { }
+    }
+    if ($valid.Count -eq 1) { return $valid[0] }
+    if ($valid.Count -gt 1) {
+        Write-Host "[i] Mais de uma instalação válida do Cursor foi encontrada:" -ForegroundColor Yellow
+        for ($i = 0; $i -lt $valid.Count; $i++) { Write-Host "    [$($i + 1)] $($valid[$i])" -ForegroundColor Cyan }
+        do { $choice = Read-Host "Digite o número da instalação que deseja usar"; $selection = 0 } while (-not [int]::TryParse($choice, [ref]$selection) -or $selection -lt 1 -or $selection -gt $valid.Count)
+        return $valid[$selection - 1]
+    }
     return $null
 }
 
-# Inicio
+# Início
 Write-Header
+
+$script:preferredCursorDir = $null
+$activeProcess = Get-Process -Name "Cursor" -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($activeProcess -and $activeProcess.Path) { $script:preferredCursorDir = Split-Path $activeProcess.Path -Parent }
 
 # 1. Fechar processos ativos do Cursor
 $running = Get-Process | Where-Object { $_.ProcessName -like "*cursor*" }
@@ -226,16 +257,18 @@ $cursorDir = Find-CursorInstallation
 
 while (-not $cursorDir -or -not (Test-Path $cursorDir)) {
     Write-Host ""
-    Write-Host "[!] Não foi possivel detectar o Cursor automaticamente." -ForegroundColor Yellow
-    $userInput = Read-Host "Por favor, digite ou cole a pasta onde o Cursor esta instalado"
+    Write-Host "[!] Não foi possível detectar o Cursor automaticamente." -ForegroundColor Yellow
+    Write-Host "Se o Cursor não estiver instalado, instale-o primeiro; se estiver em outro local, informe a pasta." -ForegroundColor Gray
+    $userInput = Read-Host "Digite ou cole a pasta onde o Cursor está instalado (Enter para sair)"
     if ([string]::IsNullOrWhiteSpace($userInput)) {
-        Write-Host "[x] Operacao cancelada pelo usuario." -ForegroundColor Red
+        Write-Host "[x] Nenhuma instalação foi selecionada. O Cursor pode não estar instalado." -ForegroundColor Red
         Exit 1
     }
-    if (Test-Path (Join-Path $userInput "resources\app")) {
+    $userInput = $userInput.Trim().Trim('"')
+    if ((Test-Path (Join-Path $userInput "resources\app\package.json") -PathType Leaf) -and (Test-Path (Join-Path $userInput "Cursor.exe") -PathType Leaf)) {
         $cursorDir = $userInput
     } else {
-        Write-Host "[x] Pasta invalida ou 'resources\app' não encontrado!" -ForegroundColor Red
+        Write-Host "[x] Instalação do Cursor não encontrada nesse caminho." -ForegroundColor Red
     }
 }
 
@@ -244,14 +277,14 @@ $cursorAppDir = Join-Path $cursorDir "resources\app"
 $targetReactDir = Join-Path $cursorAppDir "out\vs\workbench\react-runtime\react"
 $targetWorkbenchDir = Join-Path $cursorAppDir "out\vs\workbench"
 
-# Pasta padronizada de backup dentro do diretorio do programa
+# Pasta padronizada de backup dentro do diretório do programa
 $cursorBackupDir = Join-Path $cursorDir "_backups"
 
 $coreDir = $PSScriptRoot
 if (-not $coreDir) { $coreDir = (Get-Location).Path }
 
 # 3. Backup e Protecao Inteligente do arquivo original de fábrica na pasta do programa
-# (Nota: Nenhum arquivo temporario e gravado na pasta do instalador/pendrive, garantindo portabilidade total)
+# (Nota: Nenhum arquivo temporário é gravado na pasta do instalador/pendrive, garantindo portabilidade total)
 
 # Detectar versão atual do Cursor
 $currentVersion = $null
@@ -276,6 +309,18 @@ $versionBackupDir = Join-Path (Join-Path $cursorBackupDir $currentVersion) $appC
 $versionReactDir = Join-Path $versionBackupDir "react-runtime\react"
 $versionWorkbenchDir = Join-Path $versionBackupDir "workbench"
 $versionEntryDir = Join-Path $versionBackupDir "workbench-entry"
+$versionElectronMainDir = Join-Path $versionBackupDir "electron-main"
+$liveElectronMain = Join-Path $cursorAppDir "out\main.js"
+$backupElectronMain = Join-Path $versionElectronMainDir "main.js"
+if (-not (Test-Path -LiteralPath $backupElectronMain)) {
+    if (-not (Test-Path -LiteralPath $liveElectronMain)) { throw "Menu nativo do Cursor não encontrado: $liveElectronMain" }
+    $electronMainText = [IO.File]::ReadAllText($liveElectronMain)
+    if ($electronMainText.Contains('label:"Abrir o Cursor"') -or $electronMainText.Contains('label:"Limpar todas as notificações"')) {
+        throw "O menu nativo já contém PT-BR, mas falta o backup original desta versão. Nenhum arquivo foi alterado. Repare o Cursor e tente novamente."
+    }
+    New-Item -ItemType Directory -Path $versionElectronMainDir -Force | Out-Null
+    Copy-Item -LiteralPath $liveElectronMain -Destination $backupElectronMain
+}
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 $liveDesktop = Join-Path $targetWorkbenchDir "workbench.desktop.main.js"
 $backupDesktop = Join-Path $versionWorkbenchDir "workbench.desktop.main.js"
@@ -359,6 +404,10 @@ if ($cursorAlreadyTranslated) {
     Write-Host ''
     Write-Host '    [i] Cursor já está em Português (Brasil); verificando atualizações do dicionário PT-BR.' -ForegroundColor Cyan
     Write-Host "        Backup original preservado: $versionBackupDir" -ForegroundColor Gray
+    $trayPatchScript = Join-Path $coreDir "patch-tray-menu.cjs"
+    if (-not (Test-Path -LiteralPath $trayPatchScript)) { throw "Patcher do menu nativo não encontrado: $trayPatchScript" }
+    node $trayPatchScript "$cursorDir" "$versionBackupDir"
+    if ($LASTEXITCODE -ne 0) { throw "Falha ao atualizar o menu nativo da bandeja do Cursor (código $LASTEXITCODE)." }
     $dictSrc = Join-Path $coreDir "cursor-pt-dict.js"
     $dictDst = Join-Path $targetWorkbenchDir "cursor-pt-dict.js"
     if ((Test-Path -LiteralPath $dictSrc) -and (Test-Path -LiteralPath $dictDst)) {
@@ -374,7 +423,7 @@ if ($cursorAlreadyTranslated) {
     }
     $exePath = Join-Path $cursorDir "Cursor.exe"
     if (Test-Path $exePath) {
-        if (Read-OpenChoice "Deseja iniciar o aplicativo Cursor? [S = abrir | N/Enter/Esc = fechar]: ") {
+        if (Read-OpenChoice "Deseja abrir o Cursor? [S = sim | N/Enter/Esc = sair]: ") {
             Start-CursorDetached -Executable $exePath -Locale 'pt-br'
         }
     }
@@ -453,6 +502,9 @@ if (Test-Path $cleanGlassSrc) {
 # 6.1 Aplicar patches nativos no workbench (Acoes, Menus e Dialogos)
 Write-Host ""
 Write-Host "[5.1/6] Aplicando tradução nas acoes nativas e dialogos..." -ForegroundColor White
+$trayPatchScript = Join-Path $coreDir "patch-tray-menu.cjs"
+node $trayPatchScript "$cursorDir" "$versionBackupDir"
+if ($LASTEXITCODE -ne 0) { throw "Falha ao traduzir o menu nativo da bandeja do Cursor (código $LASTEXITCODE)." }
 $patchScript = Join-Path $coreDir "patch-workbench.js"
 if (Test-Path $patchScript) {
     node $patchScript "$cursorDir" "$versionBackupDir"
@@ -487,7 +539,7 @@ Write-Host ""
 
 $exePath = Join-Path $cursorDir "Cursor.exe"
 if (Test-Path $exePath) {
-    if (Read-OpenChoice "Deseja iniciar o aplicativo Cursor? [S = abrir | N/Enter/Esc = fechar]: ") {
+    if (Read-OpenChoice "Deseja abrir o Cursor? [S = sim | N/Enter/Esc = sair]: ") {
         Write-Host "Iniciando Cursor de forma independente..." -ForegroundColor Cyan
         # Inicia sem console herdado para que os logs internos do Electron não
         # mantenham a janela do instalador aberta.

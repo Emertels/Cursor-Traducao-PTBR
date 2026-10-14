@@ -1,5 +1,5 @@
 @echo off
-title Instalador Cursor PT-BR - Emerson Teles
+title Instalador PT-BR - Cursor - Emerson Teles
 cls
 echo ====================================================================
 echo             TRADUCAO CURSOR PARA PORTUGUES DO BRASIL

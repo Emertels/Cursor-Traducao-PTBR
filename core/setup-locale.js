@@ -197,7 +197,7 @@ Object.assign(DICT, {
   "Show Apps Panel": "Mostrar Painel de Aplicativos",
   "Hide Sidebar": "Ocultar Barra Lateral",
   "Open SSH Config": "Abrir Configuração SSH",
-  "Type in a host like user@host or select from SSH config": "Digite um host como usuario@host ou selecione da configuração SSH",
+  "Type in a host like user@host or select from SSH config": "Digite um host como usuário@host ou selecione da configuração SSH",
   "SSH Hostname": "Nome do host SSH",
   "Select Folder": "Selecionar Pasta",
   "Search workspaces...": "Pesquisar espaços de trabalho...",
@@ -290,7 +290,7 @@ Object.assign(DICT, {
   "New Project": "Novo Projeto",
   "New Agent in No Repo": "Novo Agente sem Repositório",
   "Select configured SSH host or enter an SSH destination": "Selecione o host SSH configurado ou insira um destino SSH",
-  "e.g. ubuntu@ec2-3-106-99.amazonaws.com, ssh -i key user@host, or named host below": "ex.: ubuntu@ec2-3-106-99.amazonaws.com, ssh -i chave usuario@host ou host nomeado abaixo",
+  "e.g. ubuntu@ec2-3-106-99.amazonaws.com, ssh -i key user@host, or named host below": "ex.: ubuntu@ec2-3-106-99.amazonaws.com, ssh -i chave usuário@host ou host nomeado abaixo",
   "+ Add New SSH Host...": "+ Adicionar Novo Host SSH...",
   "Add New SSH Host...": "Adicionar Novo Host SSH...",
   "Configure SSH Hosts...": "Configurar Hosts SSH...",
@@ -3034,7 +3034,7 @@ function patchWorkbench(installDir) {
            .replace('placeholder:z?"Search remote repos, cloud environments...":B==="workspace"?"Search workspaces...":"Search repos, cloud environments..."', 'placeholder:z?"Pesquisar repositórios remotos, ambientes na nuvem...":B==="workspace"?"Pesquisar espaços de trabalho...":"Pesquisar repositórios, ambientes na nuvem..."')
            .replace('h=`Step ${(u>=0?u:0)+1} of ${n.length}`', 'h=`Etapa ${(u>=0?u:0)+1} de ${n.length}`')
            .replace('placeholder:"SSH Hostname"', 'placeholder:"Nome do host SSH"')
-           .replace('children:"Type in a host like user@host or select from SSH config"', 'children:"Digite um host como usuario@host ou selecione da configuração SSH"')
+           .replace('children:"Type in a host like user@host or select from SSH config"', 'children:"Digite um host como usuário@host ou selecione da configuração SSH"')
            .replace('{label:"Open SSH Config",onClick:a}', '{label:"Abrir Configuração SSH",onClick:a}')
            .replace('kHg=[{id:"host",label:"Host"},{id:"connecting",label:"Connect"},{id:"folder",label:"Folder"}]', 'kHg=[{id:"host",label:"Host"},{id:"connecting",label:"Conectar"},{id:"folder",label:"Pasta"}]')
            .replace('case"connecting":{p=a?"Connection Failed":"Connecting";break e}case"folder":{p="Select Folder";break e}', 'case"connecting":{p=a?"Falha na Conexão":"Conectando";break e}case"folder":{p="Selecionar Pasta";break e}')
@@ -3097,7 +3097,7 @@ function patchInnoUpdater(installDir) {
     // Se já estiver traduzido, pula
     let buf = fs.readFileSync(updaterPath);
     if (buf.includes(Buffer.from("Atualização do Cursor - ", "utf8"))) {
-      console.log(`[+] Atualizador do Cursor em ${updaterPath} ja esta traduzido.`);
+      console.log(`[+] Atualizador do Cursor em ${updaterPath} já está traduzido.`);
       return;
     }
 

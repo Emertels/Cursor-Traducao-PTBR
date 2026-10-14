@@ -12,7 +12,7 @@ if (fs.existsSync(sshExtPath)) {
   const t1_dst = 'r.title="Selecione o host SSH configurado ou insira um destino SSH"';
 
   const t2_src = 'r.placeholder="e.g. ubuntu@ec2-3-106-99.amazonaws.com, ssh -i key user@host, or named host below"';
-  const t2_dst = 'r.placeholder="ex.: ubuntu@ec2-3-106-99.amazonaws.com, ssh -i chave usuario@host ou host nomeado abaixo"';
+  const t2_dst = 'r.placeholder="ex.: ubuntu@ec2-3-106-99.amazonaws.com, ssh -i chave usuário@host ou host nomeado abaixo"';
 
   const t3_src = 'g="$(add) Add New SSH Host..."';
   const t3_dst = 'g="$(add) Adicionar Novo Host SSH..."';

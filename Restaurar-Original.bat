@@ -1,5 +1,5 @@
 @echo off
-title Restaurador Cursor Original - Emerson Teles
+title Restaurador PT-BR - Cursor - Emerson Teles
 cls
 echo ====================================================================
 echo          RESTAURACAO DO CURSOR PARA O ESTADO ORIGINAL

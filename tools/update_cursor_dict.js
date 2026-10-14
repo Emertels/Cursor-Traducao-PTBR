@@ -353,7 +353,7 @@ if (content.includes(insertMarker)) {
   content = content.replace(insertMarker, insertMarker + '\n' + jsonEntries);
   console.log('[OK] Novas traduções injetadas em CURSOR_DICT.');
 } else {
-  console.log('[WARN] Marker nao encontrado, injetando no topo do CURSOR_DICT');
+  console.log('[WARN] Marker não encontrado, injetando no topo do CURSOR_DICT');
   content = content.replace('export const CURSOR_DICT = {', 'export const CURSOR_DICT = {\n' + Object.entries(newTerms).map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v)},`).join('\n'));
 }
 
