@@ -1,4 +1,12 @@
 # Histórico de Alterações
+## [1.4.0] — Cursor 3.27.22 — 30/10/2026
+
+### Atualização, interface e instalador
+- Atualizado para Cursor 3.27.22. A varredura encontrou inicialmente 396 candidatos; foram adicionados 191 mapeamentos diretos e uma regra dinâmica para o aviso de atualização (`Update to {version} is ready — click to restart`).
+- Corrigida a detecção do ponto de entrada Glass no patcher para a estrutura do bundle 3.27.x. A instalação havia interrompido nessa etapa; o patcher agora reconhece a estrutura nova e preserva as chamadas originais.
+- Tradução aplicada no Windows. Integridade e checksums do aplicativo reparados e sincronizados após a instalação.
+- A auditoria final lista 208 candidatos em inglês; são majoritariamente nomes de modelos/provedores, conteúdo de demonstração/teste e diagnósticos internos, sem classificação como strings confirmadas da interface. Nomes de produtos e identificadores foram mantidos.
+- ZIP portátil sem README, CHANGELOG ou arquivos de agente; notas completas nesta release e no repositório.
 
 ### Teste confirmado — Cursor 3.24.12 — 14/10/2026
 - O usuário confirmou o teste da tradução na instalação e informou que o Cursor está funcionando.

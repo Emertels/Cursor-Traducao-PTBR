@@ -1,25 +1,17 @@
 # 🖱️ Cursor AI — Tradução para Português do Brasil (PT-BR) 🇧🇷
+### Versão 1.4.0 — Cursor 3.27.22 — 30/10/2026
+Atualização da camada Glass para 3.27.22, 191 mensagens mapeadas, aviso de atualização traduzido dinamicamente e correção do ponto de entrada do patcher para o bundle 3.27.x. Instalação aplicada e integridade sincronizada.
+
 ### Menu da bandeja — 13/10/2026
 O instalador também traduz o menu nativo da bandeja e “Nova Conversa”, mantendo backup versionado do arquivo Electron e restauração correspondente. Foram adicionadas 5 strings visíveis nesta revisão.
 
 
-![Versão](https://img.shields.io/badge/Versão-v1.3.0-blue?style=for-the-badge)
+![Versão](https://img.shields.io/badge/Versão-v1.4.0-blue?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/Idioma-Português%20(Brasil)-green?style=for-the-badge)
 
 Pacote portátil de localização do **Cursor AI** para Português do Brasil (pt-BR), cobrindo o núcleo do editor e os textos visíveis da camada do Cursor, como Composer, Chat, Agentes, painéis de diff e configurações de modelos.
 
-<!-- cursor-status -->
-## Estado da atualização — 13/10/2026 · Cursor 3.24.12
-
-- Em 14/10/2026, o usuário confirmou que testou a tradução no Cursor 3.24.12 e que está funcionando.
-
-- A instalação local foi atualizada para Cursor 3.24.12. Foram encontradas e adicionadas 36 traduções confirmadas da interface do Glass, incluindo MCP, Design/Anotar, menus laterais e configurações de largura do chat.
-- A varredura inicial encontrou 223 candidatos em inglês. Depois das traduções confirmadas, o scanner ainda lista 190 candidatos; muitos parecem exemplos internos, modelos e ferramentas de diagnóstico, mas nem todos foram classificados e podem restar outros textos de interface.
-- Nesta rodada anterior foram adicionadas 5 mensagens: 4 relacionadas a voz/gravação e 1 orientação sobre mensagens durante a execução (com duas variantes de pontuação no dicionário).
-- O placeholder Plan, Build, / for skills, @ for context já existia no dicionário, mas agora também é substituído diretamente no bundle Glass. As duas descrições de automações e a frase parcial que aparecia misturada com “Ativado” receberam tratamento no patch/fallback.
-- Na versão local anterior 3.23.23, a varredura encontrou 178 candidatos; não comparar diretamente com a compilação atual, cujo conjunto de bundles mudou.
-- Instalador e restaurador validam primeiro caminhos do processo, registro e locais conhecidos; só quando nenhum candidato válido contém Cursor.exe e `resources\app\package.json` iniciam a busca profunda em unidades fixas e removíveis. A busca ignora pastas raiz do sistema e junctions, deduplica caminhos, mantém instalações distintas selecionáveis e não usa a barra sobreposta do PowerShell. Mantenha `Find-Installations.ps1` ao lado dos scripts.
-<!-- /cursor-status -->
+<!-- cursor-status -->`r`n## Estado da atualização — 30/10/2026 · Cursor 3.27.22`r`n`r`n- Tradução v1.4.0 aplicada; 191 mapeamentos novos e correção do patcher Glass para a estrutura 3.27.x. Integridade verificada.`r`n- 208 candidatos residuais do scanner foram mantidos fora do catálogo por serem predominantemente nomes de modelos, exemplos de teste e diagnósticos internos; a lista não equivale a rótulos pendentes confirmados.`r`n<!-- /cursor-status -->
 
 ---
 
