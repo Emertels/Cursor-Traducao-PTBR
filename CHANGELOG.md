@@ -1,4 +1,8 @@
 # Histórico de Alterações
+## [1.4.1] — Cursor 3.27.22 — 26/11/2026
+
+- Adicionadas traduções para `Settings` (*Configurações*), `Upgrade to Premium` (*Atualizar para o Premium*), `Cursor, Grok Bot, Grok, and X in one plan, with more coding usage.` (*Cursor, Grok Bot, Grok e X em um único plano, com mais uso para programação.*) e `Verify extension signatures when installing and loading extensions. May require an editor restart to take effect.` (*Verifica as assinaturas das extensões ao instalar e carregar extensões. Pode exigir reiniciar o editor para entrar em vigor.*).
+
 ## [1.4.0] — Cursor 3.27.22 — 30/10/2026
 
 ### Atualização, interface e instalador
